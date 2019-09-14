@@ -1,6 +1,5 @@
 import firebase from 'firebase/app'
-
+const config = require('./config.firebase.json')
 export const firebaseInit = () => {
-  const config = {}
   firebase.initializeApp(config)
 }
