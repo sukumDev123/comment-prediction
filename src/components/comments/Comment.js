@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './Commect.css'
+import { ContextMessage, SHOWMESSAGE } from '../message-handle/MessageProvider'
 function Comment() {
   const [comment, setComment] = useState('')
+  const [stateMessage, dispatchMessage] = useContext(ContextMessage)
   const whenUserComment = e => {
     const commentVal = e.target.value
     setComment(commentVal)
@@ -11,6 +13,10 @@ function Comment() {
     const checkCommentIsNotNull = comment !== ''
     if (checkCommentIsNotNull) {
       // TODO connect comment to firebase.
+      const setMessage = SHOWMESSAGE
+      setMessage.payload.message = 'Firebase s'
+      setMessage.payload.status = '200'
+      dispatchMessage(setMessage)
     } else {
       // TODO message fail
     }

@@ -23,3 +23,9 @@
 .on-message-bottom > h4:last-child {
   color: red;
 }
+.message-hide {
+  display: none;
+}
+.message-show {
+  display: block;
+}

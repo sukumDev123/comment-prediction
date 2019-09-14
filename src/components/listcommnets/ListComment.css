@@ -5,6 +5,8 @@
 .comment-div {
   color: white;
   margin-bottom: 10px;
-  border-bottom: 1px solid;
+  /* border-bottom: 1px solid; */
   padding: 20px;
+  background: rgb(12, 12, 12);
+  border-radius: 6px;
 }

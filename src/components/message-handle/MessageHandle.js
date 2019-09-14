@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './MessageHandle.css'
+import { ContextMessage, NOTSHOWMESSAGEANDCLERNSTATE } from './MessageProvider'
+
 function MessageHandle() {
+  const [stateMessage, dispatchMessage] = useContext(ContextMessage)
+  const whenUserCloseMessage = e => {
+    dispatchMessage(NOTSHOWMESSAGEANDCLERNSTATE)
+  }
   return (
-    <div className="message-box box-background">
+    <div className={`${stateMessage.show} message-box box-background`}>
       <div className="message-body">
-        <h2>Message Comment</h2>
+        <h2>{stateMessage.message}</h2>
         <div className="on-message-bottom">
-          <h4>message status</h4>
-          <h4>close button</h4>
+          <h4>{stateMessage.status}</h4>
+          <h4 onClick={whenUserCloseMessage}>close button</h4>
         </div>
       </div>
     </div>

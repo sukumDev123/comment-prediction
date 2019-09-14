@@ -14,7 +14,7 @@
 }
 .box-comment {
   padding: 20px;
-  width: 50%;
+  width: 60%;
   margin: 20px auto;
 }
 .form-comment {
@@ -34,4 +34,14 @@
 }
 .comment-btn:hover {
   color: rgb(0, 94, 255);
+}
+
+@media only screen and (max-width: 600px) {
+  .box-comment {
+    width: 90%;
+    margin: 20px auto;
+  }
+  .form-comment {
+    grid-template-columns: 70% 30%;
+  }
 }
