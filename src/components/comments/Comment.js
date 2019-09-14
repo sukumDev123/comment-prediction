@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react'
 import './Commect.css'
+import { dataBaseUpdateComment } from '../../firebase-handle/firebase-realtime'
 import { ContextMessage, SHOWMESSAGE } from '../message-handle/MessageProvider'
 function Comment() {
   const [comment, setComment] = useState('')
-  const [stateMessage, dispatchMessage] = useContext(ContextMessage)
+  const { dispatchMessage } = useContext(ContextMessage)
   const whenUserComment = e => {
     const commentVal = e.target.value
     setComment(commentVal)
@@ -13,10 +14,19 @@ function Comment() {
     const checkCommentIsNotNull = comment !== ''
     if (checkCommentIsNotNull) {
       // TODO connect comment to firebase.
-      const setMessage = SHOWMESSAGE
-      setMessage.payload.message = 'Firebase s'
-      setMessage.payload.status = '200'
-      dispatchMessage(setMessage)
+      dataBaseUpdateComment(comment)
+        .then(message => {
+          const setMessage = SHOWMESSAGE
+          setMessage.payload.message = message
+          setMessage.payload.status = '200'
+          dispatchMessage(setMessage)
+        })
+        .catch(err => {
+          const setMessage = SHOWMESSAGE
+          setMessage.payload.message = err
+          setMessage.payload.status = '200'
+          dispatchMessage(setMessage)
+        })
     } else {
       // TODO message fail
     }
@@ -32,7 +42,7 @@ function Comment() {
           onChange={whenUserComment}
         ></input>
         <button type="submit" className="comment-btn">
-          Comment{' '}
+          Comment
         </button>
       </form>
     </div>

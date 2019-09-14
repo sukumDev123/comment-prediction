@@ -1,14 +1,63 @@
 import React, { useState, useEffect } from 'react'
 import './ListComment.css'
-import { getCommentsLastest } from '../../firebase-handle/firebase-realtime'
+import {
+  getCommentsLastest,
+  getNewCommentsLastest
+} from '../../firebase-handle/firebase-realtime'
+
+function ListCommectPredicted({ comments }) {
+  if (comments) {
+    return comments.map((data, ind) => {
+      return (
+        <div className="comment-div" key={ind}>
+          <h3>
+            {data.userName ? data.userName : 'Anonymous'}:{' '}
+            {data.text ? data.text : 'not comment'}
+          </h3>
+        </div>
+      )
+    })
+  }
+  return <h4>Empty</h4>
+}
+function ListNewCommentIs({ commentNew }) {
+  if (commentNew) {
+    return commentNew.map((data, ind) => {
+      return (
+        <div className="comment-div" key={ind}>
+          <h3>
+            {data.userName ? data.userName : 'Anonymous'}:{' '}
+            {data.comment ? data.comment : 'not comment'}
+          </h3>
+        </div>
+      )
+    })
+  }
+  return <h4>Empty</h4>
+}
+
+function Loading({ loading }) {
+  if (loading) {
+    return (
+      <div className="lodingCode-box">
+        <div className="lodingCode"></div>
+        <h3>Loading</h3>
+      </div>
+    )
+  }
+  return ''
+}
 
 function ListComment({ typeSentiment }) {
   const [datas, setDatas] = useState([])
+  const [loding, setLoading] = useState(true)
+  const [commentNew, setCommentNew] = useState([])
   const handleState = (typeSentiment, if_, ret) =>
     typeSentiment === if_ ? ret : null
 
   useEffect(() => {
     setDatas([])
+    setCommentNew([])
     const hadleCallBackFB = data => {
       if (data) {
         const mapData = Object.values(data.val()).map(data =>
@@ -28,21 +77,25 @@ function ListComment({ typeSentiment }) {
         setDatas(returnData)
       }
     }
+    const handleNewCommentData = data => {
+      if (data) {
+        const getSnapShopToArray = Object.values(data.val())
+        setCommentNew(getSnapShopToArray)
+        setLoading(false)
+      }
+    }
     getCommentsLastest().on('value', hadleCallBackFB)
+    getNewCommentsLastest().on('value', handleNewCommentData)
   }, [typeSentiment])
 
   return (
     <div className="list-comment-box">
-      {datas.map((data, ind) => {
-        return (
-          <div className="comment-div" key={ind}>
-            <h3>
-              {data.userName ? data.userName : 'Anonymous'}:{' '}
-              {data.text ? data.text : 'not comment'}
-            </h3>
-          </div>
-        )
-      })}
+      <Loading loading={loding}></Loading>
+      {typeSentiment !== 'new-comment' ? (
+        <ListCommectPredicted comments={datas}></ListCommectPredicted>
+      ) : (
+        <ListNewCommentIs commentNew={commentNew}> </ListNewCommentIs>
+      )}
     </div>
   )
 }

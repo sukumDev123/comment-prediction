@@ -48,7 +48,7 @@ function MessageProvider({ children }) {
     messageObject
   )
   return (
-    <ContextMessage.Provider value={[stateMessageReducer, dispatchMessage]}>
+    <ContextMessage.Provider value={{ stateMessageReducer, dispatchMessage }}>
       {children}
     </ContextMessage.Provider>
   )

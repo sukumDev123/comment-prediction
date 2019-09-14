@@ -1,4 +1,4 @@
-import React, { useState, useContext, useReducer } from 'react'
+import React, { useState } from 'react'
 
 import './App.css'
 
@@ -8,7 +8,7 @@ import TypeOfSentimentsComponent from './components/type-of-sentiments/TypeOfSen
 import ListComment from './components/listcommnets/ListComment'
 import MessageProvider from './components/message-handle/MessageProvider'
 function App() {
-  const [typeSentiment, setTypeSentiment] = useState('all')
+  const [typeSentiment, setTypeSentiment] = useState('new-comment')
 
   return (
     <MessageProvider>

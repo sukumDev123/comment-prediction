@@ -1,12 +1,61 @@
 .list-comment-box {
   padding: 20px;
   transition: all 0.3s ease-in;
+  max-height: 60vh;
+  overflow: auto;
+  position: relative;
 }
 .comment-div {
   color: white;
   margin-bottom: 10px;
-  /* border-bottom: 1px solid; */
   padding: 20px;
   background: rgb(12, 12, 12);
   border-radius: 6px;
+}
+.lodingCode-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.lodingCode-box > h3 {
+  color: white;
+  font-weight: bold;
+  animation: loadingText 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+.lodingCode {
+  margin: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 10px solid;
+  border-top-left-radius: 0px;
+  border-right: 0px;
+  /* animation: loaderFrame 0.3s ease-in; */
+  animation: loderFrame 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  /* transform: rotate(90deg); */
+}
+@keyframes loadingText {
+  0% {
+    color: rgb(255, 255, 255, 0);
+  }
+  50% {
+    color: rgb(255, 255, 255, 0.5);
+  }
+  100% {
+    color: rgb(255, 255, 255, 1);
+  }
+}
+@keyframes loderFrame {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(90);
+    border-color: rgb(252, 147, 147);
+  }
+  100% {
+    transform: rotate(360deg);
+    border-color: red;
+  }
 }

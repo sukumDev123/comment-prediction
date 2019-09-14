@@ -12,7 +12,6 @@ export const dataBaseUpdateComment = comment => {
   })
 }
 
-export const getCommentsLastest = () => {
-  const data_get = dbHandle('commect_predicted')
-  return data_get
-}
+export const getCommentsLastest = () => dbHandle('commect_predicted')
+
+export const getNewCommentsLastest = () => dbHandle('comments')
