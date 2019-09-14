@@ -1,0 +1,31 @@
+.type-sentiment-box {
+  background: rgb(16, 16, 16);
+}
+
+li {
+  list-style: none;
+  padding: 20px;
+  transition: all 0.3s ease-in;
+}
+.goodStyle {
+  color: green;
+}
+.negStyle {
+  color: red;
+}
+.recomStyle {
+  color: yellow;
+}
+.allStyle {
+  color: white;
+}
+.clicked {
+  background: rgb(0, 0, 0);
+  font-weight: bold;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+/* goodStyle',
+    'negStyle',
+    'recomString',
+    'allStyle */

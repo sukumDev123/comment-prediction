@@ -1,0 +1,10 @@
+.list-comment-box {
+  padding: 20px;
+  transition: all 0.3s ease-in;
+}
+.comment-div {
+  color: white;
+  margin-bottom: 10px;
+  border-bottom: 1px solid;
+  padding: 20px;
+}

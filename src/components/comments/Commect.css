@@ -1,0 +1,37 @@
+.commentInput {
+  width: 100%;
+  border: 0;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgb(0, 0, 0);
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.title-comment {
+  color: white;
+  margin-bottom: 10px;
+}
+.box-comment {
+  padding: 20px;
+  width: 50%;
+  margin: 20px auto;
+}
+.form-comment {
+  display: grid;
+  grid-template-columns: 90% 10%;
+}
+.comment-btn {
+  border: 0;
+  background: black;
+  color: white;
+  font-weight: bold;
+  border-left: 1px solid;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.comment-btn:hover {
+  color: rgb(0, 94, 255);
+}

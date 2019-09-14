@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+
+import './App.css'
+
+import Comment from './components/comments/Comment'
+import MessageHandle from './components/message-handle/MessageHandle'
+import TypeOfSentimentsComponent from './components/type-of-sentiments/TypeOfSentimentsComponent'
+import ListComment from './components/listcommnets/ListComment'
 
 function App() {
+  const [typeSentiment, setTypeSentiment] = useState('all')
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MessageHandle />
+      <Comment></Comment>
+      <div className="aboutList">
+        <TypeOfSentimentsComponent
+          setTypeSentiment={setTypeSentiment}
+        ></TypeOfSentimentsComponent>
+        <ListComment typeSentiment={typeSentiment}></ListComment>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
