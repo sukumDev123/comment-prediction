@@ -79,7 +79,10 @@ function ListComment({ typeSentiment }) {
     }
     const handleNewCommentData = data => {
       if (data) {
-        const getSnapShopToArray = Object.values(data.val())
+        const getSnapShopToArray = Object.values(data.val()).filter(
+          data => data.analyser === false
+        )
+        console.log({ getSnapShopToArray })
         setCommentNew(getSnapShopToArray)
         setLoading(false)
       }
