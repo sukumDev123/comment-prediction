@@ -2,15 +2,9 @@ import React, { useState } from 'react'
 import './TypeOfSentiment.css'
 
 function TypeOfSentimentsComponent({ setTypeSentiment }) {
-  const sentiments = ['good', 'neg', 'recommend', 'all', 'new-comment']
+  const sentiments = ['all', 'new-comment']
   const [preClick, setPreC] = useState(sentiments.length - 1)
-  const sentimentsColorStyle = [
-    'goodStyle',
-    'negStyle',
-    'recomStyle',
-    'allStyle',
-    'allStyle'
-  ]
+  const sentimentsColorStyle = ['allStyle', 'goodStyle']
   const [sentimentUserSelectedCss, changeUi] = useState(
     Array(sentiments.length)
       .fill('none')

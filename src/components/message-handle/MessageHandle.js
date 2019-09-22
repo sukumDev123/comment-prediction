@@ -12,8 +12,10 @@ function MessageHandle() {
       <div className="message-body">
         <h2>{stateMessageReducer.message}</h2>
         <div className="on-message-bottom">
-          <h4>{stateMessageReducer.status}</h4>
-          <h4 onClick={whenUserCloseMessage}>close button</h4>
+          <h4 className={stateMessageReducer.className}>
+            {stateMessageReducer.status}
+          </h4>
+          <h4 onClick={whenUserCloseMessage}>Close</h4>
         </div>
       </div>
     </div>

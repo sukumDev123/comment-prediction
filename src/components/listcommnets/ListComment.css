@@ -59,3 +59,7 @@
     border-color: red;
   }
 }
+.comment-status {
+  text-align: center;
+  color: white;
+}

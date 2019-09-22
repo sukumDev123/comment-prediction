@@ -4,24 +4,39 @@
   position: fixed;
   bottom: 10px;
   right: 10px;
-  min-width: 300px;
+  max-width: 400px;
   padding: 20px;
 }
 .message-body > h2 {
   color: white;
-  padding: 10px;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 10px;
 }
 .on-message-bottom {
   padding: 5px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .on-message-bottom > h4:first-child {
-  color: white;
-  text-align: left;
+  padding-left: 10px;
 }
 .on-message-bottom > h4:last-child {
   color: red;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+}
+.on-message-bottom > h4:last-child:hover {
+  color: white;
+  background: rgb(255, 119, 119);
+  padding: 0 10px 0 10px;
+  border-radius: 6px;
+}
+.success {
+  color: rgb(89, 167, 16);
+}
+.error {
+  color: rgb(245, 61, 61);
 }
 .message-hide {
   display: none;

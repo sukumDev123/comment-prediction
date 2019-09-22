@@ -2,37 +2,31 @@ import React, { useReducer, createContext } from 'react'
 const messageObject = {
   message: '',
   status: '',
+  className: '',
   show: 'message-hide'
 }
 export const NOTSHOWMESSAGEANDCLERNSTATE = {
   type: 'NOTSHOWMESSAGEANDCLERNSTATE',
-  payload: {
-    message: '',
-    statue: ''
-  }
+  payload: messageObject
 }
 export const SHOWMESSAGE = {
   type: 'SHOWMESSAGE',
-  payload: {
-    message: '',
-    status: ''
-  }
+  payload: messageObject
 }
 function messageReducer(state = messageObject, action) {
   switch (action.type) {
     case SHOWMESSAGE.type: {
-      const { message, status } = action.payload
+      const { message, status, className } = action.payload
       return {
         message,
         status,
+        className,
         show: 'message-show'
       }
     }
     case NOTSHOWMESSAGEANDCLERNSTATE.type: {
-      const { message, status } = action.payload
       return {
-        message,
-        status,
+        ...messageObject,
         show: 'message-hide'
       }
     }

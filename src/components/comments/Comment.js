@@ -19,12 +19,14 @@ function Comment() {
           const setMessage = SHOWMESSAGE
           setMessage.payload.message = message
           setMessage.payload.status = '200'
+          setMessage.payload.className = 'success'
           dispatchMessage(setMessage)
         })
         .catch(err => {
           const setMessage = SHOWMESSAGE
           setMessage.payload.message = err
           setMessage.payload.status = '200'
+          setMessage.payload.className = 'error'
           dispatchMessage(setMessage)
         })
     } else {
