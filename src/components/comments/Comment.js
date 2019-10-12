@@ -1,20 +1,28 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import './Commect.css'
 import { dataBaseUpdateComment } from '../../firebase-handle/firebase-realtime'
 import { ContextMessage, SHOWMESSAGE } from '../message-handle/MessageProvider'
+import { userNameAndCommendContext } from '../../providers/UserNameAndCommend'
+import { USERADDCOMMENT } from '../../reducers/UserNameAneCommentReducer'
 function Comment() {
-  const [comment, setComment] = useState('')
+  const { stateOfUserCommend, setDispatchUserCommend } = useContext(
+    userNameAndCommendContext
+  )
   const { dispatchMessage } = useContext(ContextMessage)
   const whenUserComment = e => {
     const commentVal = e.target.value
-    setComment(commentVal)
+    const commenState = USERADDCOMMENT
+    commenState.payload = commentVal
+    setDispatchUserCommend(commenState)
   }
   const whenUserCommentSubmit = e => {
     e.preventDefault()
-    const checkCommentIsNotNull = comment !== ''
+    const { comment, username } = stateOfUserCommend
+    const checkCommentIsNotNull = comment !== '' && username !== ''
+
     if (checkCommentIsNotNull) {
       // TODO connect comment to firebase.
-      dataBaseUpdateComment(comment)
+      dataBaseUpdateComment(comment, username)
         .then(message => {
           const setMessage = SHOWMESSAGE
           setMessage.payload.message = message
@@ -31,16 +39,24 @@ function Comment() {
         })
     } else {
       // TODO message fail
+      const setMessage = SHOWMESSAGE
+      setMessage.payload.message = 'Some of Filed are empty.'
+      setMessage.payload.status = '404'
+      setMessage.payload.className = 'error'
+      dispatchMessage(setMessage)
     }
   }
   return (
     <div className="box-background box-comment">
       <h3 className="title-comment">Comment</h3>
+      <h3 className="title-comment">
+        Username : {stateOfUserCommend.username}
+      </h3>
       <form className="form-comment" onSubmit={whenUserCommentSubmit}>
         <input
           className="commentInput"
           placeholder="commect"
-          value={comment}
+          value={stateOfUserCommend.comment}
           onChange={whenUserComment}
         ></input>
         <button type="submit" className="comment-btn">

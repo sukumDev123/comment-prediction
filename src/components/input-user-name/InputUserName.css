@@ -32,9 +32,25 @@
   border-radius: 3px;
   border: 0;
 }
-.md-form > button {
+.username-button {
   padding: 10px;
   width: 100%;
   border: 0;
+  background: rgba(0, 0, 0, 0);
   margin-top: 5px;
+  color: white;
+  transition: all 0.4s ease-in;
+  cursor: pointer;
+}
+.username-button:hover {
+  color: rgb(90, 151, 255);
+  font-weight: bold;
+  padding-top: 20px;
+  border-bottom: 1px solid;
+}
+.username-button:disabled {
+  color: rgba(255, 255, 255, 0.479);
+  border-bottom: 0px solid;
+  padding-top: 0;
+  padding-top: 20px;
 }

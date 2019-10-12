@@ -19,6 +19,7 @@ body {
   grid-template-columns: 20% 80%;
   max-height: 70vh;
 }
+
 @media only screen and (max-width: 600px) {
   .aboutList {
     grid-template-columns: 1fr;
