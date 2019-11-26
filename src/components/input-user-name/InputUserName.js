@@ -1,12 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import './InputUserName.css'
 import { userNameAndCommendContext } from '../../providers/UserNameAndCommend'
 import { USERANDDUSERNAME } from '../../reducers/UserNameAneCommentReducer'
 export default function InputUserName() {
-  const [showDiv, setShowDiv] = useState(true)
-  const { stateOfUserCommend, setDispatchUserCommend } = useContext(
-    userNameAndCommendContext
-  )
+  const {
+    stateOfUserCommend,
+    setDispatchUserCommend,
+    showDiv,
+    setShowDiv
+  } = useContext(userNameAndCommendContext)
   const whenUserChangeUsername = e => {
     const username = e.target.value
     const userState = USERANDDUSERNAME

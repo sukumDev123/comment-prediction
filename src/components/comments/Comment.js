@@ -5,9 +5,12 @@ import { ContextMessage, SHOWMESSAGE } from '../message-handle/MessageProvider'
 import { userNameAndCommendContext } from '../../providers/UserNameAndCommend'
 import { USERADDCOMMENT } from '../../reducers/UserNameAneCommentReducer'
 function Comment() {
-  const { stateOfUserCommend, setDispatchUserCommend } = useContext(
-    userNameAndCommendContext
-  )
+  const {
+    stateOfUserCommend,
+    setDispatchUserCommend,
+
+    setShowDiv
+  } = useContext(userNameAndCommendContext)
   const { dispatchMessage } = useContext(ContextMessage)
   const whenUserComment = e => {
     const commentVal = e.target.value
@@ -46,11 +49,18 @@ function Comment() {
       dispatchMessage(setMessage)
     }
   }
+
+  const whenUserChangeUser = e => {
+    setShowDiv(true)
+  }
   return (
     <div className="box-background box-comment">
       <h3 className="title-comment">Comment</h3>
       <h3 className="title-comment">
-        Username : {stateOfUserCommend.username}
+        Username : {stateOfUserCommend.username}{' '}
+        <button className="changeUserBtn" onClick={whenUserChangeUser}>
+          Change Username
+        </button>
       </h3>
       <form className="form-comment" onSubmit={whenUserCommentSubmit}>
         <input

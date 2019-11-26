@@ -36,6 +36,19 @@
   color: rgb(0, 94, 255);
 }
 
+.changeUserBtn {
+  margin-left: 20px;
+  border: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: all 0.3s ease-in;
+  color: white;
+  cursor: pointer;
+}
+.changeUserBtn:hover {
+  border-bottom: 5px solid green;
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 600px) {
   .box-comment {
     width: 90%;
