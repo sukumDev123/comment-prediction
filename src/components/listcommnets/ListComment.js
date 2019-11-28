@@ -11,7 +11,7 @@ function ListNewCommentIs({ commentNew }) {
       return (
         <div className="comment-div" key={ind}>
           <h3>
-            {data.userName ? data.userName : 'Anonymous'}:{' '}
+            {data.username ? data.username : 'Anonymous'}:{' '}
             {data.comment ? data.comment : 'not comment'}
           </h3>
         </div>
