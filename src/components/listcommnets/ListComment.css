@@ -35,6 +35,11 @@
   animation: loderFrame 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   /* transform: rotate(90deg); */
 }
+.comment-size {
+  color: white;
+  margin-right: 25px;
+  text-align: right;
+}
 @keyframes loadingText {
   0% {
     color: rgb(255, 255, 255, 0);

@@ -33,24 +33,25 @@ const Loading = ({ loading }) =>
 function ListComment({ typeSentiment }) {
   const [loding, setLoading] = useState(true)
   const [commentNew, setCommentNew] = useState([])
+  const [commentAllLength, setCommentAllLength] = useState(0)
+
   useEffect(() => {
     setCommentNew([])
     const handleNewCommentData = data => {
       // console.log({ data })
       if (data) {
         if (data.val()) {
+          let getSnapShopToArray
           if (typeSentiment === 'all') {
-            const getSnapShopToArray = Object.values(data.val())
-            setCommentNew(getSnapShopToArray)
-            setLoading(false)
+            getSnapShopToArray = Object.values(data.val())
           } else {
-            const getSnapShopToArray = Object.values(data.val()).filter(
+            getSnapShopToArray = Object.values(data.val()).filter(
               data => data.analyser === false
             )
-            console.log({ getSnapShopToArray })
-            setCommentNew(getSnapShopToArray)
-            setLoading(false)
           }
+          setCommentAllLength(getSnapShopToArray.length || 0)
+          setCommentNew(getSnapShopToArray)
+          setLoading(false)
         } else {
           setLoading(false)
         }
@@ -65,13 +66,17 @@ function ListComment({ typeSentiment }) {
   }, [typeSentiment])
 
   return (
-    <div className="list-comment-box">
-      <Loading loading={loding}></Loading>
-      {commentNew.length ? (
-        <ListNewCommentIs commentNew={commentNew}> </ListNewCommentIs>
-      ) : (
-        <h2 className="comment-status">Empty this site.</h2>
-      )}
+    <div>
+      <h2 className="comment-size">{commentAllLength} user commented.</h2>
+
+      <div className="list-comment-box">
+        <Loading loading={loding}></Loading>
+        {commentNew.length ? (
+          <ListNewCommentIs commentNew={commentNew}> </ListNewCommentIs>
+        ) : (
+          <h2 className="comment-status">Empty this site.</h2>
+        )}
+      </div>
     </div>
   )
 }

@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './TypeOfSentiment.css'
+import { userNameAndCommendContext } from '../../providers/UserNameAndCommend'
 
 function TypeOfSentimentsComponent({ setTypeSentiment }) {
   const sentiments = ['all', 'new-comment']
@@ -18,7 +19,6 @@ function TypeOfSentimentsComponent({ setTypeSentiment }) {
     setPreC(ind)
     changeUi(sentimentUserSelectedCss)
     setTypeSentiment(sentiment)
-    console.log({ sentimentUserSelectedCss })
   }
   return (
     <div className="type-sentiment-box">
