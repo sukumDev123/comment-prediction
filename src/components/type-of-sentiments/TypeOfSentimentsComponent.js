@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import './TypeOfSentiment.css'
-import { userNameAndCommendContext } from '../../providers/UserNameAndCommend'
 
 function TypeOfSentimentsComponent({ setTypeSentiment }) {
   const sentiments = ['all', 'new-comment']
