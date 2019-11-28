@@ -3,14 +3,14 @@ import './Commect.css'
 import { dataBaseUpdateComment } from '../../firebase-handle/firebase-realtime'
 import { ContextMessage, SHOWMESSAGE } from '../message-handle/MessageProvider'
 import { userNameAndCommendContext } from '../../providers/UserNameAndCommend'
-import { USERADDCOMMENT } from '../../reducers/UserNameAneCommentReducer'
+import {
+  USERADDCOMMENT,
+  USERANDDUSERNAME
+} from '../../reducers/UserNameAneCommentReducer'
 function Comment() {
-  const {
-    stateOfUserCommend,
-    setDispatchUserCommend,
-
-    setShowDiv
-  } = useContext(userNameAndCommendContext)
+  const { stateOfUserCommend, setDispatchUserCommend, setShowDiv } = useContext(
+    userNameAndCommendContext
+  )
   const { dispatchMessage } = useContext(ContextMessage)
   const whenUserComment = e => {
     const commentVal = e.target.value
@@ -31,7 +31,16 @@ function Comment() {
           setMessage.payload.message = message
           setMessage.payload.status = '200'
           setMessage.payload.className = 'success'
+          const commenState = USERADDCOMMENT
+          commenState.payload = ''
+          setDispatchUserCommend(commenState)
           dispatchMessage(setMessage)
+          if (window.confirm('You want to change my username ? ')) {
+            setShowDiv(true)
+            const userStateChange = USERANDDUSERNAME
+            userStateChange.payload = ''
+            setDispatchUserCommend(userStateChange)
+          }
         })
         .catch(err => {
           const setMessage = SHOWMESSAGE

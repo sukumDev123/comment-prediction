@@ -22,26 +22,29 @@ export default function InputUserName() {
     <div className="iusername-div">
       <div className="iuser-box">
         <h3>You need to input your name before comment.</h3>
-        <div className="md-form">
-          <input
-            placeholder="username..."
-            value={
-              stateOfUserCommend
-                ? stateOfUserCommend.username
+        <form onSubmit={whenUserAddSuccess}>
+          <div className="md-form">
+            <input
+              placeholder="username..."
+              value={
+                stateOfUserCommend
                   ? stateOfUserCommend.username
+                    ? stateOfUserCommend.username
+                    : ''
                   : ''
-                : ''
-            }
-            onChange={whenUserChangeUsername}
-          ></input>
+              }
+              onChange={whenUserChangeUsername}
+            />
+          </div>
+
           <button
             disabled={!stateOfUserCommend.username}
-            onClick={whenUserAddSuccess}
+            type="submit"
             className="username-button"
           >
             ADD USERNAME
           </button>
-        </div>
+        </form>
       </div>
     </div>
   ) : (
